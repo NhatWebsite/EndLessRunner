@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013884291024}
   - component: {fileID: 2569755886353328230}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ObstacleRat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6953007119539528263}
-  m_Layer: 0
+  - component: {fileID: -1652065404676915835}
+  m_Layer: 7
   m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -25,13 +26,25 @@ Transform:
   m_GameObject: {fileID: 5972050024742993824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 14.905206}
+  m_LocalPosition: {x: 1, y: 0, z: 10.581229}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3676038105045448842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1652065404676915835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972050024742993824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d10b0da4eb33434ab14ea0527fa0358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3676038105045836298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45,6 +58,10 @@ PrefabInstance:
       value: FishboneNight
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 28ee269fb48b08b4ebf71c7164a8af33, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 28ee269fb48b08b4ebf71c7164a8af33, type: 3}
       propertyPath: m_TagString
       value: Coin
       objectReference: {fileID: 0}
@@ -54,11 +71,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28ee269fb48b08b4ebf71c7164a8af33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.79
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28ee269fb48b08b4ebf71c7164a8af33, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.8899994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28ee269fb48b08b4ebf71c7164a8af33, type: 3}
       propertyPath: m_LocalRotation.w
@@ -125,5 +142,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.43456775, y: 0.22494528, z: 0.11493365}
-  m_Center: {x: 0, y: -0.000000014901161, z: 0}
+  m_Size: {x: 0.43456775, y: 0.34538662, z: 0.5731964}
+  m_Center: {x: 0, y: 0.06022066, z: 0.001408577}

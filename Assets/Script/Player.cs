@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class player : MonoBehaviour
 {
     public float jumpHeight;
     public float jumpLenght;
@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public float maxSpeed = 30f;
     public int invincibleTime;
     public GameObject model;
+    public GameObject magnetBooster;
+    public bool ActivateMagnet;
 
     private float slideStart;
     private Animator anim;
@@ -30,9 +32,11 @@ public class Player : MonoBehaviour
     private int currentLife;
     private bool invincible = false;
     static int blinkingValue;
-    private UIManager uiManager;
-    private int coins;
+    public UIManager uiManager;
+    public int coins;
     private float score;
+    public int Magnet;
+    public List<Track> track;
     // Start is called before the first frame update
     void Start()
     {
@@ -197,6 +201,21 @@ public class Player : MonoBehaviour
             coins++;
             uiManager.UpdateCoins(coins);
             other.transform.parent.gameObject.SetActive(false);
+            
+        }
+        if (other.CompareTag("Magnet"))
+        {
+            ActivateMagnet = true;
+            
+            other.transform.parent.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
+            magnetBooster.SetActive(true);
+            for(int i = 0; i < track.Count; i++)
+            {
+                track[i].ChangeColliderCoin(true);
+            }
+            Invoke("ReturnSizeCoin", 7f);
+
         }
         if (invincible)
         {
@@ -207,6 +226,7 @@ public class Player : MonoBehaviour
             currentLife--;
             uiManager.UpdateHeart(currentLife);
             anim.SetTrigger("Hit");
+            Debug.Log("Dead");
             speed = 0;
             if(currentLife <= 0)
             {
@@ -220,6 +240,25 @@ public class Player : MonoBehaviour
                 StartCoroutine(Blinking(invincibleTime));
             }
         }
+        if (other.CompareTag("Health"))
+        {
+            currentLife++;
+            uiManager.UpdateHeart(currentLife);
+           
+            
+        }
+      
+
+    }
+    private void ReturnSizeCoin()
+    {
+
+        for (int i = 0; i < track.Count; i++)
+        {
+            track[i].ChangeColliderCoin(false);
+
+        }
+        magnetBooster.SetActive(false);
     }
     IEnumerator Blinking(float time)
     {
@@ -234,7 +273,7 @@ public class Player : MonoBehaviour
         while(timer <time && invincible)
         {
             model.SetActive(enable);
-            //Shader.SetGlobalFloat(blinkingValue, currentBlink);
+            Shader.SetGlobalFloat(blinkingValue, currentBlink);
             yield return null;
             timer += Time.deltaTime;
             lastBlink += Time.deltaTime;
@@ -247,7 +286,7 @@ public class Player : MonoBehaviour
             }
         }
         model.SetActive(true);
-        //Shader.SetGlobalFloat(blinkingValue, 0);
+        Shader.SetGlobalFloat(blinkingValue, 0);
         invincible = false;
     }
     void CallMenu()

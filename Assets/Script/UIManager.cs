@@ -31,4 +31,5 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = "Score: " + score + "m";
     }
+    
 }
